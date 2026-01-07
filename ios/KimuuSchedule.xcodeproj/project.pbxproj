@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00C870D52C085E222ECECD10 /* KimuuScheduleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570BC172EED9392DF5E750D9 /* KimuuScheduleApp.swift */; };
+		0C9560AFCAF9723B813A3D8E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCF88512E6FE15597C32479 /* SettingsViewModel.swift */; };
+		23CC5E7048E76E6C70E00346 /* AppointmentFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE3FF4E22E5316103A5791B /* AppointmentFormView.swift */; };
+		397B3B22ABE85CA42610C55C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758968D3F0683469A709338 /* LoginView.swift */; };
+		3D6AD09DE5151D28035D34B7 /* MonthlyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D2E627880BE454EAF074D /* MonthlyCalendarView.swift */; };
+		54C17A50AE32442615E0685D /* TreatmentSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06DA13E0FC02228E2D8B35C /* TreatmentSettingsView.swift */; };
+		5BC0AE14AE7E24F48572E9DB /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E4719A43508087E6C9DF33 /* Appointment.swift */; };
+		65CF4425B00EAF43AC379A24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6A10CE022C91BD5C6FB9E0 /* User.swift */; };
+		69B792966C7D0A245385B539 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 03FB6674E84770CE1EAD230F /* Supabase */; };
+		6F2E3A46F0610604CA13D00D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA2D4611C11317AD0FC8092 /* Constants.swift */; };
+		7350655A8048ABD9B5CC032F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927127601F659B05D41E045F /* Customer.swift */; };
+		9048FD2CE67011A68E0B3FFD /* DailyCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F59960285AD0B19026C84AD /* DailyCalendarView.swift */; };
+		967642DE22B3C793CB2FAF66 /* AppointmentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A226A29D4BE8B1185C72C7 /* AppointmentDetailView.swift */; };
+		9FF9F819A6D7722E92E4BBAC /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644F2687EC3737F19CA92FA6 /* SupabaseService.swift */; };
+		AC5073BE8A2E065D5FE630E4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A025A49E87E098738F223 /* SettingsView.swift */; };
+		B27B0B28F261414BD7196C69 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C63BAE9FE7CE5E44B01F1 /* CalendarViewModel.swift */; };
+		B5D13A925F3AEFEDE27B940A /* AppointmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2057D46A81F453A6B3AE748 /* AppointmentViewModel.swift */; };
+		C05E56C791D3D1D3901168C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E6050C80CD2BF78D87E74D6 /* Assets.xcassets */; };
+		D277D3D710FA0FF451C98947 /* ColorSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7F9723E4691C5BEFB13A7 /* ColorSettingsView.swift */; };
+		E74D4F74D7B9C2D053F6ED5C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7B420589439E8897197745 /* AuthViewModel.swift */; };
+		FDA5A22D2E95BAAC771CF100 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF44B58F16130F0DA7114B3 /* Extensions.swift */; };
+		FEC6286BF236FA7CAA21B87E /* AppointmentBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84D7E8A6095CE8E14761603 /* AppointmentBlockView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0E6050C80CD2BF78D87E74D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BA2D4611C11317AD0FC8092 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4758968D3F0683469A709338 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		481C63BAE9FE7CE5E44B01F1 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		4BF44B58F16130F0DA7114B3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		570BC172EED9392DF5E750D9 /* KimuuScheduleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KimuuScheduleApp.swift; sourceTree = "<group>"; };
+		644F2687EC3737F19CA92FA6 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
+		6B0D2E627880BE454EAF074D /* MonthlyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarView.swift; sourceTree = "<group>"; };
+		6F59960285AD0B19026C84AD /* DailyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCalendarView.swift; sourceTree = "<group>"; };
+		77E4719A43508087E6C9DF33 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
+		7A330D94A5487E1C11B500C1 /* KimuuSchedule.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = KimuuSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AA7F9723E4691C5BEFB13A7 /* ColorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSettingsView.swift; sourceTree = "<group>"; };
+		8E7B420589439E8897197745 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		8F4B56AD00861B7F2BA3826E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		927127601F659B05D41E045F /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		93A226A29D4BE8B1185C72C7 /* AppointmentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentDetailView.swift; sourceTree = "<group>"; };
+		9B7A025A49E87E098738F223 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A84D7E8A6095CE8E14761603 /* AppointmentBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentBlockView.swift; sourceTree = "<group>"; };
+		ACCF88512E6FE15597C32479 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		BB6A10CE022C91BD5C6FB9E0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D2057D46A81F453A6B3AE748 /* AppointmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewModel.swift; sourceTree = "<group>"; };
+		E06DA13E0FC02228E2D8B35C /* TreatmentSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreatmentSettingsView.swift; sourceTree = "<group>"; };
+		EBE3FF4E22E5316103A5791B /* AppointmentFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentFormView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65BD056E8BC4B7F091E2D924 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69B792966C7D0A245385B539 /* Supabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		004B435C69E4AB07517F9252 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0E6050C80CD2BF78D87E74D6 /* Assets.xcassets */,
+				8F4B56AD00861B7F2BA3826E /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0735BEB16519FD8462376C31 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				570BC172EED9392DF5E750D9 /* KimuuScheduleApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		07724CCD9AEEB09598D63571 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				51602A940C5D2D18130502A6 /* Appointment */,
+				559DDCA1F9C3FC925067BB40 /* Auth */,
+				4508434F5B23A38A54CA2C18 /* Calendar */,
+				5D76AEA84DAB91CCDE988202 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4508434F5B23A38A54CA2C18 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				A84D7E8A6095CE8E14761603 /* AppointmentBlockView.swift */,
+				6F59960285AD0B19026C84AD /* DailyCalendarView.swift */,
+				6B0D2E627880BE454EAF074D /* MonthlyCalendarView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		50A5712F550C7C9E6D680AB1 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D2057D46A81F453A6B3AE748 /* AppointmentViewModel.swift */,
+				8E7B420589439E8897197745 /* AuthViewModel.swift */,
+				481C63BAE9FE7CE5E44B01F1 /* CalendarViewModel.swift */,
+				ACCF88512E6FE15597C32479 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		51602A940C5D2D18130502A6 /* Appointment */ = {
+			isa = PBXGroup;
+			children = (
+				93A226A29D4BE8B1185C72C7 /* AppointmentDetailView.swift */,
+				EBE3FF4E22E5316103A5791B /* AppointmentFormView.swift */,
+			);
+			path = Appointment;
+			sourceTree = "<group>";
+		};
+		559DDCA1F9C3FC925067BB40 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4758968D3F0683469A709338 /* LoginView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		5D76AEA84DAB91CCDE988202 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8AA7F9723E4691C5BEFB13A7 /* ColorSettingsView.swift */,
+				9B7A025A49E87E098738F223 /* SettingsView.swift */,
+				E06DA13E0FC02228E2D8B35C /* TreatmentSettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7908F84620CAD129D4634E3E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				644F2687EC3737F19CA92FA6 /* SupabaseService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7BD468886E16FE6F05646A71 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2BA2D4611C11317AD0FC8092 /* Constants.swift */,
+				4BF44B58F16130F0DA7114B3 /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		98DA16C7E143F67FDFBA71FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				77E4719A43508087E6C9DF33 /* Appointment.swift */,
+				927127601F659B05D41E045F /* Customer.swift */,
+				BB6A10CE022C91BD5C6FB9E0 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D25FF125B921DEE27C6A6289 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A330D94A5487E1C11B500C1 /* KimuuSchedule.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DF32B2B30D2219E48D7B7BED /* KimuuSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				0735BEB16519FD8462376C31 /* App */,
+				98DA16C7E143F67FDFBA71FD /* Models */,
+				004B435C69E4AB07517F9252 /* Resources */,
+				7908F84620CAD129D4634E3E /* Services */,
+				7BD468886E16FE6F05646A71 /* Utils */,
+				50A5712F550C7C9E6D680AB1 /* ViewModels */,
+				07724CCD9AEEB09598D63571 /* Views */,
+			);
+			path = KimuuSchedule;
+			sourceTree = "<group>";
+		};
+		F44A8278DD026AFE39323D6B = {
+			isa = PBXGroup;
+			children = (
+				DF32B2B30D2219E48D7B7BED /* KimuuSchedule */,
+				D25FF125B921DEE27C6A6289 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD49B1D3AAA917E94D3C3BE6 /* KimuuSchedule */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E65F8820E726877401836756 /* Build configuration list for PBXNativeTarget "KimuuSchedule" */;
+			buildPhases = (
+				2EB36EBA10DD831B28FB9649 /* Sources */,
+				C0EBE2F9E49C55E0F8AF5CF4 /* Resources */,
+				65BD056E8BC4B7F091E2D924 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KimuuSchedule;
+			packageProductDependencies = (
+				03FB6674E84770CE1EAD230F /* Supabase */,
+			);
+			productName = KimuuSchedule;
+			productReference = 7A330D94A5487E1C11B500C1 /* KimuuSchedule.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		918FCF5DC2A4AD5018FFDAE5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AD49B1D3AAA917E94D3C3BE6 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A52A6380A98BD343E5824C11 /* Build configuration list for PBXProject "KimuuSchedule" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = F44A8278DD026AFE39323D6B;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2882EB12A936DBC1D1B565FE /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD49B1D3AAA917E94D3C3BE6 /* KimuuSchedule */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0EBE2F9E49C55E0F8AF5CF4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C05E56C791D3D1D3901168C9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2EB36EBA10DD831B28FB9649 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5BC0AE14AE7E24F48572E9DB /* Appointment.swift in Sources */,
+				FEC6286BF236FA7CAA21B87E /* AppointmentBlockView.swift in Sources */,
+				967642DE22B3C793CB2FAF66 /* AppointmentDetailView.swift in Sources */,
+				23CC5E7048E76E6C70E00346 /* AppointmentFormView.swift in Sources */,
+				B5D13A925F3AEFEDE27B940A /* AppointmentViewModel.swift in Sources */,
+				E74D4F74D7B9C2D053F6ED5C /* AuthViewModel.swift in Sources */,
+				B27B0B28F261414BD7196C69 /* CalendarViewModel.swift in Sources */,
+				D277D3D710FA0FF451C98947 /* ColorSettingsView.swift in Sources */,
+				6F2E3A46F0610604CA13D00D /* Constants.swift in Sources */,
+				7350655A8048ABD9B5CC032F /* Customer.swift in Sources */,
+				9048FD2CE67011A68E0B3FFD /* DailyCalendarView.swift in Sources */,
+				FDA5A22D2E95BAAC771CF100 /* Extensions.swift in Sources */,
+				00C870D52C085E222ECECD10 /* KimuuScheduleApp.swift in Sources */,
+				397B3B22ABE85CA42610C55C /* LoginView.swift in Sources */,
+				3D6AD09DE5151D28035D34B7 /* MonthlyCalendarView.swift in Sources */,
+				AC5073BE8A2E065D5FE630E4 /* SettingsView.swift in Sources */,
+				0C9560AFCAF9723B813A3D8E /* SettingsViewModel.swift in Sources */,
+				9FF9F819A6D7722E92E4BBAC /* SupabaseService.swift in Sources */,
+				54C17A50AE32442615E0685D /* TreatmentSettingsView.swift in Sources */,
+				65CF4425B00EAF43AC379A24 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		7E42D0B5983CCD483A5E3E71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		917B34D36E7CE57EB404521E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		AAE4FD775C6877255049CEC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = KimuuSchedule/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimuu.schedule;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DF41983659D4C98ADB05EC9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = KimuuSchedule/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kimuu.schedule;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A52A6380A98BD343E5824C11 /* Build configuration list for PBXProject "KimuuSchedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				917B34D36E7CE57EB404521E /* Debug */,
+				7E42D0B5983CCD483A5E3E71 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E65F8820E726877401836756 /* Build configuration list for PBXNativeTarget "KimuuSchedule" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF41983659D4C98ADB05EC9C /* Debug */,
+				AAE4FD775C6877255049CEC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2882EB12A936DBC1D1B565FE /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		03FB6674E84770CE1EAD230F /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2882EB12A936DBC1D1B565FE /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 918FCF5DC2A4AD5018FFDAE5 /* Project object */;
+}
