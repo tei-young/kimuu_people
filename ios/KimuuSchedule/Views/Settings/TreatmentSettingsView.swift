@@ -7,13 +7,28 @@ struct TreatmentSettingsView: View {
     
     @State private var newTreatment = ""
     @State private var showingAddAlert = false
+    @State private var showingEditAlert = false
+    @State private var editingIndex: Int? = nil
+    @State private var editingText = ""
     
     var body: some View {
         NavigationStack {
             List {
                 Section {
                     ForEach(Array(viewModel.treatmentTypes.enumerated()), id: \.offset) { index, type in
-                        Text(type)
+                        HStack {
+                            Text(type)
+                            Spacer()
+                            Image(systemName: "pencil")
+                                .foregroundColor(.secondary)
+                                .font(.caption)
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            editingIndex = index
+                            editingText = type
+                            showingEditAlert = true
+                        }
                     }
                     .onMove { source, destination in
                         viewModel.moveTreatmentType(from: source, to: destination)
@@ -24,7 +39,7 @@ struct TreatmentSettingsView: View {
                 } header: {
                     Text("내 시술 종류")
                 } footer: {
-                    Text("드래그하여 순서를 변경하거나, 스와이프하여 삭제할 수 있습니다.")
+                    Text("탭하여 수정, 드래그하여 순서 변경, 스와이프하여 삭제할 수 있습니다.")
                 }
                 
                 Section {
@@ -71,6 +86,20 @@ struct TreatmentSettingsView: View {
                 Button("추가") {
                     viewModel.addTreatmentType(newTreatment)
                     newTreatment = ""
+                }
+            }
+            .alert("시술 종류 수정", isPresented: $showingEditAlert) {
+                TextField("시술 종류명", text: $editingText)
+                Button("취소", role: .cancel) {
+                    editingIndex = nil
+                    editingText = ""
+                }
+                Button("저장") {
+                    if let index = editingIndex, !editingText.isEmpty {
+                        viewModel.treatmentTypes[index] = editingText
+                    }
+                    editingIndex = nil
+                    editingText = ""
                 }
             }
             .onAppear {
