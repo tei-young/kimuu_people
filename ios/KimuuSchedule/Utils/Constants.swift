@@ -4,9 +4,8 @@ import SwiftUI
 enum Constants {
     // MARK: - Supabase
     enum Supabase {
-        // TODO: Supabase 프로젝트 생성 후 값 입력
-        static let url = URL(string: "YOUR_SUPABASE_URL")!
-        static let anonKey = "YOUR_SUPABASE_ANON_KEY"
+        static let url = URL(string: "https://hwrcbitynfrjxmukwxya.supabase.co")!
+        static let anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh3cmNiaXR5bmZyanhtdWt3eHlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc3NDQ5MzksImV4cCI6MjA4MzMyMDkzOX0.ss2u_0eKzMMm8zON_HdWM6R47jzwBmg-skz58ok_QR0"
     }
     
     // MARK: - Calendar
