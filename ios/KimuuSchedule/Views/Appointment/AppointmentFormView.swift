@@ -69,7 +69,7 @@ struct AppointmentFormView: View {
             .onAppear {
                 setupInitialValues()
             }
-            .onChange(of: formViewModel.isSaved) { _, saved in
+            .onChange(of: formViewModel.isSaved) { saved in
                 if saved {
                     Task {
                         await viewModel.fetchAppointments(for: viewModel.currentMonth)

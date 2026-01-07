@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,7 +42,7 @@
 		6B0D2E627880BE454EAF074D /* MonthlyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCalendarView.swift; sourceTree = "<group>"; };
 		6F59960285AD0B19026C84AD /* DailyCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCalendarView.swift; sourceTree = "<group>"; };
 		77E4719A43508087E6C9DF33 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
-		7A330D94A5487E1C11B500C1 /* KimuuSchedule.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = KimuuSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A330D94A5487E1C11B500C1 /* KimuuSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KimuuSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA7F9723E4691C5BEFB13A7 /* ColorSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSettingsView.swift; sourceTree = "<group>"; };
 		8E7B420589439E8897197745 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		8F4B56AD00861B7F2BA3826E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -235,7 +235,6 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					AD49B1D3AAA917E94D3C3BE6 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -253,7 +252,6 @@
 			packageReferences = (
 				2882EB12A936DBC1D1B565FE /* XCRemoteSwiftPackageReference "supabase-swift" */,
 			);
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -436,6 +434,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6F5Q5W46WA;
 				INFOPLIST_FILE = KimuuSchedule/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -452,6 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6F5Q5W46WA;
 				INFOPLIST_FILE = KimuuSchedule/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,0 +1,4 @@
+1. /Users/tei/Desktop/kimuu_people/ios/KimuuSchedule.xcodeproj Signing for "KimuuSchedule" requires a development team. Select a development team in the Signing & Capabilities editor.
+2. /Users/tei/Desktop/kimuu_people/ios/KimuuSchedule/Views/Appointment/AppointmentFormView.swift:72:14 'onChange(of:initial:_:)' is only available in iOS 17.0 or newer
+3. /Users/tei/Desktop/kimuu_people/ios/KimuuSchedule/Views/Settings/ColorSettingsView.swift:42:14 'onChange(of:initial:_:)' is only available in iOS 17.0 or newer
+4. /Users/tei/Desktop/kimuu_people/ios/KimuuSchedule/Views/Settings/TreatmentSettingsView.swift:81:14 'onChange(of:initial:_:)' is only available in iOS 17.0 or newer

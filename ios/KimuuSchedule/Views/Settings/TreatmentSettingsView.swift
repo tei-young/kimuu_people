@@ -78,7 +78,7 @@ struct TreatmentSettingsView: View {
                     viewModel.treatmentTypes = user.treatmentTypes
                 }
             }
-            .onChange(of: viewModel.isSaved) { _, saved in
+            .onChange(of: viewModel.isSaved) { saved in
                 if saved {
                     dismiss()
                 }

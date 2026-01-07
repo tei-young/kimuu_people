@@ -84,12 +84,31 @@ struct DailyCalendarView: View {
             
             Spacer()
             
-            Text(viewModel.timeScale.displayName)
-                .font(.caption)
+            Menu {
+                ForEach(TimeScale.allCases, id: \.self) { scale in
+                    Button {
+                        viewModel.timeScale = scale
+                    } label: {
+                        HStack {
+                            Text(scale.displayName)
+                            if viewModel.timeScale == scale {
+                                Image(systemName: "checkmark")
+                            }
+                        }
+                    }
+                }
+            } label: {
+                HStack(spacing: 4) {
+                    Text(viewModel.timeScale.displayName)
+                        .font(.caption)
+                    Image(systemName: "chevron.down")
+                        .font(.caption2)
+                }
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
                 .background(Color.secondary.opacity(0.2))
                 .cornerRadius(8)
+            }
             
             if viewModel.visibleUsers.count > Constants.Calendar.maxStaffsPerPage {
                 HStack(spacing: 4) {
