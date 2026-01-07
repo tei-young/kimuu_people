@@ -12,6 +12,7 @@ struct AppointmentFormView: View {
     @StateObject private var formViewModel = AppointmentViewModel()
     
     let initialDate: Date
+    let initialHour: Int?
     let mode: AppointmentFormMode
     
     var body: some View {
@@ -19,7 +20,7 @@ struct AppointmentFormView: View {
             Form {
                 Section("고객 정보") {
                     TextField("고객명", text: $formViewModel.customerName)
-                    TextField("핸드폰번호", text: $formViewModel.customerPhone)
+                    TextField("010-0000-0000", text: $formViewModel.customerPhone)
                         .keyboardType(.phonePad)
                 }
                 
@@ -33,8 +34,8 @@ struct AppointmentFormView: View {
                 }
                 
                 Section("시간") {
-                    DatePicker("시작", selection: $formViewModel.startTime, displayedComponents: [.date, .hourAndMinute])
-                    DatePicker("종료", selection: $formViewModel.endTime, displayedComponents: [.date, .hourAndMinute])
+                    DatePicker("시작", selection: $formViewModel.startTime, displayedComponents: [.hourAndMinute])
+                    DatePicker("종료", selection: $formViewModel.endTime, displayedComponents: [.hourAndMinute])
                 }
                 
                 Section("메모") {
@@ -99,9 +100,11 @@ struct AppointmentFormView: View {
     private func setupInitialValues() {
         switch mode {
         case .add:
-            formViewModel.startTime = initialDate.setting(hour: 10, minute: 0)
-            formViewModel.endTime = initialDate.setting(hour: 11, minute: 0)
+            let hour = initialHour ?? 10
+            formViewModel.startTime = initialDate.setting(hour: hour, minute: 0)
+            formViewModel.endTime = initialDate.setting(hour: hour + 1, minute: 0)
             formViewModel.treatmentType = treatmentOptions.first ?? ""
+            formViewModel.customerPhone = "010"
         case .edit(let appointment):
             formViewModel.loadAppointment(appointment)
         }
@@ -123,6 +126,7 @@ struct AppointmentFormView: View {
     AppointmentFormView(
         viewModel: CalendarViewModel(),
         initialDate: Date(),
+        initialHour: nil,
         mode: .add
     )
     .environmentObject(AuthViewModel())

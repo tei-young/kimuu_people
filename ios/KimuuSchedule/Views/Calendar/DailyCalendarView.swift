@@ -6,6 +6,7 @@ struct DailyCalendarView: View {
     @State private var selectedAppointment: Appointment?
     @State private var showingFilterSheet = false
     @State private var currentPage = 0
+    @State private var selectedHour: Int? = nil
     
     private let hourHeight: CGFloat = 60
     
@@ -20,6 +21,7 @@ struct DailyCalendarView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
+                    selectedHour = nil
                     showingAddSheet = true
                 } label: {
                     Image(systemName: "plus")
@@ -30,6 +32,7 @@ struct DailyCalendarView: View {
             AppointmentFormView(
                 viewModel: viewModel,
                 initialDate: viewModel.selectedDate,
+                initialHour: selectedHour,
                 mode: .add
             )
         }
@@ -163,6 +166,10 @@ struct DailyCalendarView: View {
                     timeScale: viewModel.timeScale,
                     onAppointmentTap: { appointment in
                         selectedAppointment = appointment
+                    },
+                    onEmptyTap: { hour in
+                        selectedHour = hour
+                        showingAddSheet = true
                     }
                 )
             }
@@ -209,6 +216,7 @@ struct StaffColumn: View {
     let appointments: [Appointment]
     let timeScale: TimeScale
     let onAppointmentTap: (Appointment) -> Void
+    let onEmptyTap: (Int) -> Void
     
     var body: some View {
         VStack(spacing: 0) {
@@ -231,6 +239,10 @@ struct StaffColumn: View {
                                     .frame(height: 0.5),
                                 alignment: .top
                             )
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                onEmptyTap(hour)
+                            }
                     }
                 }
                 
