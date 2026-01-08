@@ -50,11 +50,6 @@ struct TreatmentSettingsView: View {
                     }
                 }
                 
-                Section {
-                    Button("기본값으로 초기화") {
-                        viewModel.treatmentTypes = Constants.defaultTreatmentTypes
-                    }
-                }
             }
             .navigationTitle("시술 종류 관리")
             .navigationBarTitleDisplayMode(.inline)
