@@ -40,8 +40,8 @@ struct AppointmentFormView: View {
                 }
                 
                 Section("시간") {
-                    DatePicker("시작", selection: $formViewModel.startTime, displayedComponents: [.hourAndMinute])
-                    DatePicker("종료", selection: $formViewModel.endTime, displayedComponents: [.hourAndMinute])
+                    TimePickerRow(label: "시작", date: $formViewModel.startTime, baseDate: initialDate)
+                    TimePickerRow(label: "종료", date: $formViewModel.endTime, baseDate: initialDate)
                 }
                 
                 Section("메모") {
@@ -55,6 +55,10 @@ struct AppointmentFormView: View {
                             .foregroundColor(.red)
                     }
                 }
+            }
+            .scrollDismissesKeyboard(.interactively)
+            .onTapGesture {
+                hideKeyboard()
             }
             .navigationTitle(isEditMode ? "일정 수정" : "일정 추가")
             .navigationBarTitleDisplayMode(.inline)
@@ -125,6 +129,57 @@ struct AppointmentFormView: View {
         case .edit(let appointment):
             await formViewModel.updateAppointment(id: appointment.id)
         }
+    }
+}
+
+struct TimePickerRow: View {
+    let label: String
+    @Binding var date: Date
+    let baseDate: Date
+    
+    @State private var selectedHour: Int = 0
+    @State private var selectedMinute: Int = 0
+    
+    private let hours = Array(0...23)
+    private let minutes = [0, 10, 20, 30, 40, 50]
+    
+    var body: some View {
+        HStack {
+            Text(label)
+            Spacer()
+            
+            Picker("시", selection: $selectedHour) {
+                ForEach(hours, id: \.self) { hour in
+                    Text(String(format: "%02d", hour)).tag(hour)
+                }
+            }
+            .pickerStyle(.menu)
+            .onChange(of: selectedHour) { newHour in
+                updateDate()
+            }
+            
+            Text(":")
+            
+            Picker("분", selection: $selectedMinute) {
+                ForEach(minutes, id: \.self) { minute in
+                    Text(String(format: "%02d", minute)).tag(minute)
+                }
+            }
+            .pickerStyle(.menu)
+            .onChange(of: selectedMinute) { newMinute in
+                updateDate()
+            }
+        }
+        .onAppear {
+            let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+            selectedHour = components.hour ?? 0
+            let minute = components.minute ?? 0
+            selectedMinute = minutes.min(by: { abs($0 - minute) < abs($1 - minute) }) ?? 0
+        }
+    }
+    
+    private func updateDate() {
+        date = Calendar.current.date(bySettingHour: selectedHour, minute: selectedMinute, second: 0, of: baseDate) ?? date
     }
 }
 
