@@ -89,8 +89,8 @@ struct AppointmentFormView: View {
                 if saved {
                     Task {
                         await viewModel.fetchAppointments(for: viewModel.currentMonth)
+                        dismiss()
                     }
-                    dismiss()
                 }
             }
         }

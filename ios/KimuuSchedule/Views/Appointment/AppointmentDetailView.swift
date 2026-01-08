@@ -1,14 +1,19 @@
 import SwiftUI
 
 struct AppointmentDetailView: View {
-    let appointment: Appointment
     @ObservedObject var viewModel: CalendarViewModel
     @EnvironmentObject var authViewModel: AuthViewModel
     @Environment(\.dismiss) var dismiss
     
+    @State private var appointment: Appointment
     @State private var showingEditSheet = false
     @State private var showingDeleteAlert = false
     @StateObject private var appointmentViewModel = AppointmentViewModel()
+    
+    init(appointment: Appointment, viewModel: CalendarViewModel) {
+        self._appointment = State(initialValue: appointment)
+        self._viewModel = ObservedObject(initialValue: viewModel)
+    }
     
     var body: some View {
         NavigationStack {
@@ -69,7 +74,11 @@ struct AppointmentDetailView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showingEditSheet) {
+            .sheet(isPresented: $showingEditSheet, onDismiss: {
+                if let updated = viewModel.appointments.first(where: { $0.id == appointment.id }) {
+                    appointment = updated
+                }
+            }) {
                 AppointmentFormView(
                     viewModel: viewModel,
                     initialDate: appointment.startTime,
@@ -100,11 +109,8 @@ struct AppointmentDetailView: View {
 }
 
 #Preview {
-    let user = User.mock
-    let appointment = Appointment.mock(for: user.id)
-    
-    return AppointmentDetailView(
-        appointment: appointment,
+    AppointmentDetailView(
+        appointment: Appointment.mock(for: User.mock.id),
         viewModel: CalendarViewModel()
     )
     .environmentObject(AuthViewModel())
