@@ -87,28 +87,35 @@ struct MonthlyCalendarView: View {
     }
     
     private var calendarGrid: some View {
-        LazyVGrid(columns: columns, spacing: 8) {
-            ForEach(daysInMonth, id: \.self) { date in
-                if let date = date {
-                    DayCell(
-                        date: date,
-                        isSelected: Calendar.current.isDate(date, inSameDayAs: viewModel.selectedDate),
-                        isToday: Calendar.current.isDateInToday(date),
-                        userColors: viewModel.hasAppointments(on: date).compactMap { userId in
-                            viewModel.users.first { $0.id == userId }?.color
+        GeometryReader { geometry in
+            let totalRows = CGFloat((daysInMonth.count + 6) / 7)
+            let availableHeight = geometry.size.height
+            let cellHeight = max(50, availableHeight / totalRows - 4)
+            
+            LazyVGrid(columns: columns, spacing: 4) {
+                ForEach(daysInMonth, id: \.self) { date in
+                    if let date = date {
+                        DayCell(
+                            date: date,
+                            isSelected: Calendar.current.isDate(date, inSameDayAs: viewModel.selectedDate),
+                            isToday: Calendar.current.isDateInToday(date),
+                            userColors: viewModel.hasAppointments(on: date).compactMap { userId in
+                                viewModel.users.first { $0.id == userId }?.color
+                            },
+                            cellHeight: cellHeight
+                        )
+                        .onTapGesture {
+                            viewModel.selectedDate = date
+                            showingDailyView = true
                         }
-                    )
-                    .onTapGesture {
-                        viewModel.selectedDate = date
-                        showingDailyView = true
+                    } else {
+                        Color.clear
+                            .frame(height: cellHeight)
                     }
-                } else {
-                    Color.clear
-                        .frame(height: 50)
                 }
             }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
     
     private var monthYearString: String {
@@ -149,13 +156,14 @@ struct DayCell: View {
     let isSelected: Bool
     let isToday: Bool
     let userColors: [String]
+    var cellHeight: CGFloat = 50
     
     var body: some View {
         VStack(spacing: 4) {
             Text("\(Calendar.current.component(.day, from: date))")
-                .font(.system(size: 16, weight: isToday ? .bold : .regular))
+                .font(.system(size: 18, weight: isToday ? .bold : .regular))
                 .foregroundColor(textColor)
-                .frame(width: 32, height: 32)
+                .frame(width: 36, height: 36)
                 .background(
                     Circle()
                         .fill(isSelected ? Color.blue : (isToday ? Color.blue.opacity(0.2) : Color.clear))
@@ -169,8 +177,10 @@ struct DayCell: View {
                 }
             }
             .frame(height: 8)
+            
+            Spacer(minLength: 0)
         }
-        .frame(height: 50)
+        .frame(height: cellHeight)
     }
     
     private var textColor: Color {

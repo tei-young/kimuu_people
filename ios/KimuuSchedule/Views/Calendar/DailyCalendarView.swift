@@ -16,7 +16,7 @@ struct DailyCalendarView: View {
             filterAndPageIndicator
             calendarContent
         }
-        .navigationTitle(dateString)
+        .navigationTitle("일별 상세")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -42,7 +42,7 @@ struct DailyCalendarView: View {
                 viewModel: viewModel
             )
         }
-        .gesture(magnificationGesture)
+        .simultaneousGesture(magnificationGesture)
     }
     
     private var dateHeader: some View {
@@ -174,14 +174,16 @@ struct DailyCalendarView: View {
                 )
             }
         }
-        .gesture(
-            DragGesture()
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 30)
                 .onEnded { value in
                     if viewModel.visibleUsers.count > Constants.Calendar.maxStaffsPerPage {
-                        if value.translation.width < -50 && currentPage < pageCount - 1 {
-                            currentPage += 1
-                        } else if value.translation.width > 50 && currentPage > 0 {
-                            currentPage -= 1
+                        if abs(value.translation.width) > abs(value.translation.height) {
+                            if value.translation.width < -50 && currentPage < pageCount - 1 {
+                                currentPage += 1
+                            } else if value.translation.width > 50 && currentPage > 0 {
+                                currentPage -= 1
+                            }
                         }
                     }
                 }

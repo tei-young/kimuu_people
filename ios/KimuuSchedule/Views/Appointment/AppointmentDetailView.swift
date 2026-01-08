@@ -66,6 +66,7 @@ struct AppointmentDetailView: View {
                 AppointmentFormView(
                     viewModel: viewModel,
                     initialDate: appointment.startTime,
+                    initialHour: nil,
                     mode: .edit(appointment)
                 )
             }
