@@ -62,23 +62,18 @@ final class AppointmentViewModel: ObservableObject {
         errorMessage = nil
         defer { isLoading = false }
         
-        let encoder = JSONEncoder()
-        guard let customersData = try? encoder.encode(customers),
-              let customersJSON = String(data: customersData, encoding: .utf8) else {
-            errorMessage = "고객 정보 인코딩 실패"
-            return
-        }
+        let dto = AppointmentUpdateDTO(
+            customers: customers,
+            treatmentType: treatmentType,
+            startTime: startTime,
+            endTime: endTime,
+            memo: memo.isEmpty ? nil : memo
+        )
         
         do {
             try await supabase
                 .from("appointments")
-                .update([
-                    "customers": customersJSON,
-                    "treatment_type": treatmentType,
-                    "start_time": ISO8601DateFormatter().string(from: startTime),
-                    "end_time": ISO8601DateFormatter().string(from: endTime),
-                    "memo": memo
-                ])
+                .update(dto)
                 .eq("id", value: id.uuidString)
                 .execute()
             

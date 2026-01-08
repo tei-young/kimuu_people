@@ -72,6 +72,8 @@ struct Appointment: Codable, Identifiable, Equatable {
 struct AppointmentDTO: Codable {
     let userId: UUID
     let customers: [CustomerInfo]
+    let customerName: String
+    let customerPhone: String
     let treatmentType: String
     let startTime: Date
     let endTime: Date
@@ -80,10 +82,53 @@ struct AppointmentDTO: Codable {
     enum CodingKeys: String, CodingKey {
         case userId = "user_id"
         case customers
+        case customerName = "customer_name"
+        case customerPhone = "customer_phone"
         case treatmentType = "treatment_type"
         case startTime = "start_time"
         case endTime = "end_time"
         case memo
+    }
+    
+    init(userId: UUID, customers: [CustomerInfo], treatmentType: String, startTime: Date, endTime: Date, memo: String?) {
+        self.userId = userId
+        self.customers = customers
+        self.customerName = customers.first?.name ?? ""
+        self.customerPhone = customers.first?.phone ?? ""
+        self.treatmentType = treatmentType
+        self.startTime = startTime
+        self.endTime = endTime
+        self.memo = memo
+    }
+}
+
+struct AppointmentUpdateDTO: Codable {
+    let customers: [CustomerInfo]
+    let customerName: String
+    let customerPhone: String
+    let treatmentType: String
+    let startTime: Date
+    let endTime: Date
+    let memo: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case customers
+        case customerName = "customer_name"
+        case customerPhone = "customer_phone"
+        case treatmentType = "treatment_type"
+        case startTime = "start_time"
+        case endTime = "end_time"
+        case memo
+    }
+    
+    init(customers: [CustomerInfo], treatmentType: String, startTime: Date, endTime: Date, memo: String?) {
+        self.customers = customers
+        self.customerName = customers.first?.name ?? ""
+        self.customerPhone = customers.first?.phone ?? ""
+        self.treatmentType = treatmentType
+        self.startTime = startTime
+        self.endTime = endTime
+        self.memo = memo
     }
 }
 
