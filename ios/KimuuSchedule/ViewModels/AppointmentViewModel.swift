@@ -3,8 +3,7 @@ import Supabase
 
 @MainActor
 final class AppointmentViewModel: ObservableObject {
-    @Published var customerName = ""
-    @Published var customerPhone = ""
+    @Published var customers: [CustomerInfo] = [CustomerInfo()]
     @Published var treatmentType = ""
     @Published var startTime = Date()
     @Published var endTime = Date()
@@ -15,6 +14,23 @@ final class AppointmentViewModel: ObservableObject {
     
     private let supabase = SupabaseService.shared.client
     
+    var customerName: String {
+        customers.map { $0.name }.joined(separator: ", ")
+    }
+    
+    var customerPhone: String {
+        customers.first?.phone ?? ""
+    }
+    
+    func addCustomer() {
+        customers.append(CustomerInfo())
+    }
+    
+    func removeCustomer(at index: Int) {
+        guard customers.count > 1 else { return }
+        customers.remove(at: index)
+    }
+    
     func createAppointment(for userId: UUID) async {
         isLoading = true
         errorMessage = nil
@@ -22,8 +38,7 @@ final class AppointmentViewModel: ObservableObject {
         
         let dto = AppointmentDTO(
             userId: userId,
-            customerName: customerName,
-            customerPhone: customerPhone,
+            customers: customers,
             treatmentType: treatmentType,
             startTime: startTime,
             endTime: endTime,
@@ -47,12 +62,18 @@ final class AppointmentViewModel: ObservableObject {
         errorMessage = nil
         defer { isLoading = false }
         
+        let encoder = JSONEncoder()
+        guard let customersData = try? encoder.encode(customers),
+              let customersJSON = String(data: customersData, encoding: .utf8) else {
+            errorMessage = "고객 정보 인코딩 실패"
+            return
+        }
+        
         do {
             try await supabase
                 .from("appointments")
                 .update([
-                    "customer_name": customerName,
-                    "customer_phone": customerPhone,
+                    "customers": customersJSON,
                     "treatment_type": treatmentType,
                     "start_time": ISO8601DateFormatter().string(from: startTime),
                     "end_time": ISO8601DateFormatter().string(from: endTime),
@@ -87,8 +108,7 @@ final class AppointmentViewModel: ObservableObject {
     }
     
     func loadAppointment(_ appointment: Appointment) {
-        customerName = appointment.customerName
-        customerPhone = appointment.customerPhone
+        customers = appointment.customers
         treatmentType = appointment.treatmentType
         startTime = appointment.startTime
         endTime = appointment.endTime
@@ -96,8 +116,7 @@ final class AppointmentViewModel: ObservableObject {
     }
     
     func reset() {
-        customerName = ""
-        customerPhone = ""
+        customers = [CustomerInfo()]
         treatmentType = ""
         startTime = Date()
         endTime = Date()

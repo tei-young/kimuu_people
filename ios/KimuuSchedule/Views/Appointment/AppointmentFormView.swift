@@ -18,16 +18,34 @@ struct AppointmentFormView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("고객 정보") {
-                    TextField("고객명", text: $formViewModel.customerName)
-                    TextField("010-0000-0000", text: $formViewModel.customerPhone)
-                        .keyboardType(.phonePad)
-                        .onChange(of: formViewModel.customerPhone) { newValue in
-                            let formatted = newValue.formattedPhoneNumber
-                            if formatted != newValue {
-                                formViewModel.customerPhone = formatted
+                ForEach(Array(formViewModel.customers.enumerated()), id: \.element.id) { index, customer in
+                    Section(index == 0 ? "고객 정보" : "고객 정보 \(index + 1)") {
+                        TextField("고객명", text: $formViewModel.customers[index].name)
+                        TextField("010-0000-0000", text: $formViewModel.customers[index].phone)
+                            .keyboardType(.phonePad)
+                            .onChange(of: formViewModel.customers[index].phone) { newValue in
+                                let formatted = newValue.formattedPhoneNumber
+                                if formatted != newValue {
+                                    formViewModel.customers[index].phone = formatted
+                                }
+                            }
+                        
+                        if formViewModel.customers.count > 1 {
+                            Button(role: .destructive) {
+                                formViewModel.removeCustomer(at: index)
+                            } label: {
+                                Label("이 고객 삭제", systemImage: "person.badge.minus")
                             }
                         }
+                    }
+                }
+                
+                Section {
+                    Button {
+                        formViewModel.addCustomer()
+                    } label: {
+                        Label("고객 추가", systemImage: "person.badge.plus")
+                    }
                 }
                 
                 Section("시술 정보") {
@@ -106,10 +124,12 @@ struct AppointmentFormView: View {
     }
     
     private var isValid: Bool {
-        !formViewModel.customerName.isEmpty &&
-        !formViewModel.customerPhone.isEmpty &&
-        !formViewModel.treatmentType.isEmpty &&
-        formViewModel.endTime > formViewModel.startTime
+        let hasValidCustomers = formViewModel.customers.allSatisfy { 
+            !$0.name.isEmpty && !$0.phone.isEmpty 
+        }
+        return hasValidCustomers &&
+            !formViewModel.treatmentType.isEmpty &&
+            formViewModel.endTime > formViewModel.startTime
     }
     
     private func setupInitialValues() {
@@ -119,7 +139,6 @@ struct AppointmentFormView: View {
             formViewModel.startTime = initialDate.setting(hour: hour, minute: 0)
             formViewModel.endTime = initialDate.setting(hour: hour + 1, minute: 0)
             formViewModel.treatmentType = treatmentOptions.first ?? ""
-            formViewModel.customerPhone = "010"
         case .edit(let appointment):
             formViewModel.loadAppointment(appointment)
         }

@@ -18,9 +18,11 @@ struct AppointmentDetailView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("고객 정보") {
-                    LabeledContent("고객명", value: appointment.customerName)
-                    LabeledContent("연락처", value: appointment.customerPhone.formattedPhoneNumber)
+                ForEach(Array(appointment.customers.enumerated()), id: \.element.id) { index, customer in
+                    Section(appointment.customers.count == 1 ? "고객 정보" : "고객 \(index + 1)") {
+                        LabeledContent("고객명", value: customer.name)
+                        LabeledContent("연락처", value: customer.phone.formattedPhoneNumber)
+                    }
                 }
                 
                 Section("시술 정보") {

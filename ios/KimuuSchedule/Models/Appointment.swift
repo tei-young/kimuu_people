@@ -1,10 +1,36 @@
 import Foundation
 
+struct CustomerInfo: Codable, Equatable, Identifiable {
+    var id = UUID()
+    var name: String
+    var phone: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name, phone
+    }
+    
+    init(name: String = "", phone: String = "010") {
+        self.name = name
+        self.phone = phone
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.phone = try container.decode(String.self, forKey: .phone)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(phone, forKey: .phone)
+    }
+}
+
 struct Appointment: Codable, Identifiable, Equatable {
     let id: UUID
     let userId: UUID
-    var customerName: String
-    var customerPhone: String
+    var customers: [CustomerInfo]
     var treatmentType: String
     var startTime: Date
     var endTime: Date
@@ -15,14 +41,21 @@ struct Appointment: Codable, Identifiable, Equatable {
     enum CodingKeys: String, CodingKey {
         case id
         case userId = "user_id"
-        case customerName = "customer_name"
-        case customerPhone = "customer_phone"
+        case customers
         case treatmentType = "treatment_type"
         case startTime = "start_time"
         case endTime = "end_time"
         case memo
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+    }
+    
+    var customerName: String {
+        customers.map { $0.name }.joined(separator: ", ")
+    }
+    
+    var customerPhone: String {
+        customers.first?.phone ?? ""
     }
     
     var durationMinutes: Int {
@@ -38,8 +71,7 @@ struct Appointment: Codable, Identifiable, Equatable {
 
 struct AppointmentDTO: Codable {
     let userId: UUID
-    let customerName: String
-    let customerPhone: String
+    let customers: [CustomerInfo]
     let treatmentType: String
     let startTime: Date
     let endTime: Date
@@ -47,8 +79,7 @@ struct AppointmentDTO: Codable {
     
     enum CodingKeys: String, CodingKey {
         case userId = "user_id"
-        case customerName = "customer_name"
-        case customerPhone = "customer_phone"
+        case customers
         case treatmentType = "treatment_type"
         case startTime = "start_time"
         case endTime = "end_time"
@@ -68,8 +99,7 @@ extension Appointment {
         return Appointment(
             id: UUID(),
             userId: userId,
-            customerName: "홍길동",
-            customerPhone: "010-1234-5678",
+            customers: [CustomerInfo(name: "홍길동", phone: "010-1234-5678")],
             treatmentType: "눈썹문신",
             startTime: startTime,
             endTime: endTime,
@@ -96,8 +126,7 @@ extension Appointment {
                     appointments.append(Appointment(
                         id: UUID(),
                         userId: user.id,
-                        customerName: "고객\(index + 1)-\(i + 1)",
-                        customerPhone: "010-\(1000 + index)-\(5000 + i)",
+                        customers: [CustomerInfo(name: "고객\(index + 1)-\(i + 1)", phone: "010-\(1000 + index)-\(5000 + i)")],
                         treatmentType: Constants.defaultTreatmentTypes[i % 3],
                         startTime: startTime,
                         endTime: endTime,
