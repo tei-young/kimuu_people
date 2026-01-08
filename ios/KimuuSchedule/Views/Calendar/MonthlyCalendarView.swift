@@ -21,6 +21,9 @@ struct MonthlyCalendarView: View {
                     Button {
                         viewModel.currentMonth = Date()
                         viewModel.selectedDate = Date()
+                        Task {
+                            await viewModel.fetchAppointments(for: viewModel.currentMonth)
+                        }
                     } label: {
                         Text("오늘")
                     }
