@@ -42,12 +42,63 @@ struct Appointment: Codable, Identifiable, Equatable {
         case id
         case userId = "user_id"
         case customers
+        case customerName = "customer_name"
+        case customerPhone = "customer_phone"
         case treatmentType = "treatment_type"
         case startTime = "start_time"
         case endTime = "end_time"
         case memo
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+    }
+    
+    init(id: UUID, userId: UUID, customers: [CustomerInfo], treatmentType: String, startTime: Date, endTime: Date, memo: String?, createdAt: Date, updatedAt: Date) {
+        self.id = id
+        self.userId = userId
+        self.customers = customers
+        self.treatmentType = treatmentType
+        self.startTime = startTime
+        self.endTime = endTime
+        self.memo = memo
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        id = try container.decode(UUID.self, forKey: .id)
+        userId = try container.decode(UUID.self, forKey: .userId)
+        treatmentType = try container.decode(String.self, forKey: .treatmentType)
+        startTime = try container.decode(Date.self, forKey: .startTime)
+        endTime = try container.decode(Date.self, forKey: .endTime)
+        memo = try container.decodeIfPresent(String.self, forKey: .memo)
+        createdAt = try container.decode(Date.self, forKey: .createdAt)
+        updatedAt = try container.decode(Date.self, forKey: .updatedAt)
+        
+        if let decodedCustomers = try? container.decode([CustomerInfo].self, forKey: .customers),
+           !decodedCustomers.isEmpty {
+            customers = decodedCustomers
+        } else {
+            let name = try container.decodeIfPresent(String.self, forKey: .customerName) ?? ""
+            let phone = try container.decodeIfPresent(String.self, forKey: .customerPhone) ?? ""
+            customers = [CustomerInfo(name: name, phone: phone)]
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(userId, forKey: .userId)
+        try container.encode(customers, forKey: .customers)
+        try container.encode(customerName, forKey: .customerName)
+        try container.encode(customerPhone, forKey: .customerPhone)
+        try container.encode(treatmentType, forKey: .treatmentType)
+        try container.encode(startTime, forKey: .startTime)
+        try container.encode(endTime, forKey: .endTime)
+        try container.encodeIfPresent(memo, forKey: .memo)
+        try container.encode(createdAt, forKey: .createdAt)
+        try container.encode(updatedAt, forKey: .updatedAt)
     }
     
     var customerName: String {
