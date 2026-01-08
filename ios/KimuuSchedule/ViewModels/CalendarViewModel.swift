@@ -117,4 +117,12 @@ final class CalendarViewModel: ObservableObject {
         }
         return Color(hex: user.color)
     }
+    
+    func hasOverlappingAppointment(userId: UUID, startTime: Date, endTime: Date, excludingId: UUID? = nil) -> Bool {
+        return appointments.contains { appointment in
+            guard appointment.userId == userId else { return false }
+            if let excludingId = excludingId, appointment.id == excludingId { return false }
+            return startTime < appointment.endTime && endTime > appointment.startTime
+        }
+    }
 }

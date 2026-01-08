@@ -147,6 +147,23 @@ struct AppointmentFormView: View {
     private func saveAppointment() async {
         guard let userId = authViewModel.currentUser?.id else { return }
         
+        var excludingId: UUID? = nil
+        if case .edit(let appointment) = mode {
+            excludingId = appointment.id
+        }
+        
+        let hasOverlap = viewModel.hasOverlappingAppointment(
+            userId: userId,
+            startTime: formViewModel.startTime,
+            endTime: formViewModel.endTime,
+            excludingId: excludingId
+        )
+        
+        if hasOverlap {
+            formViewModel.errorMessage = "해당 시간에 이미 다른 일정이 있습니다"
+            return
+        }
+        
         switch mode {
         case .add:
             await formViewModel.createAppointment(for: userId)
