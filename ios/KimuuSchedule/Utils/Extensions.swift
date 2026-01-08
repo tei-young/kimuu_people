@@ -57,3 +57,29 @@ extension View {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+extension String {
+    var formattedPhoneNumber: String {
+        let digits = self.filter { $0.isNumber }
+        
+        guard !digits.isEmpty else { return "" }
+        
+        var result = ""
+        let digitArray = Array(digits)
+        
+        for (index, digit) in digitArray.enumerated() {
+            if index == 3 || index == 7 {
+                result += "-"
+            }
+            if index < 11 {
+                result += String(digit)
+            }
+        }
+        
+        return result
+    }
+    
+    var digitsOnly: String {
+        self.filter { $0.isNumber }
+    }
+}

@@ -22,6 +22,12 @@ struct AppointmentFormView: View {
                     TextField("고객명", text: $formViewModel.customerName)
                     TextField("010-0000-0000", text: $formViewModel.customerPhone)
                         .keyboardType(.phonePad)
+                        .onChange(of: formViewModel.customerPhone) { newValue in
+                            let formatted = newValue.formattedPhoneNumber
+                            if formatted != newValue {
+                                formViewModel.customerPhone = formatted
+                            }
+                        }
                 }
                 
                 Section("시술 정보") {

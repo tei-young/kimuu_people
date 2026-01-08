@@ -15,7 +15,7 @@ struct AppointmentDetailView: View {
             List {
                 Section("고객 정보") {
                     LabeledContent("고객명", value: appointment.customerName)
-                    LabeledContent("연락처", value: appointment.customerPhone)
+                    LabeledContent("연락처", value: appointment.customerPhone.formattedPhoneNumber)
                 }
                 
                 Section("시술 정보") {
