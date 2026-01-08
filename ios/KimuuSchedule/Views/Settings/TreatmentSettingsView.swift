@@ -32,9 +32,11 @@ struct TreatmentSettingsView: View {
                     }
                     .onMove { source, destination in
                         viewModel.moveTreatmentType(from: source, to: destination)
+                        saveChanges()
                     }
                     .onDelete { indexSet in
                         indexSet.forEach { viewModel.removeTreatmentType(at: $0) }
+                        saveChanges()
                     }
                 } header: {
                     Text("내 시술 종류")
@@ -55,20 +57,9 @@ struct TreatmentSettingsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("취소") {
+                    Button("닫기") {
                         dismiss()
                     }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("저장") {
-                        Task {
-                            if let userId = authViewModel.currentUser?.id {
-                                await viewModel.updateTreatmentTypes(userId: userId)
-                                await authViewModel.refreshCurrentUser()
-                            }
-                        }
-                    }
-                    .disabled(viewModel.isLoading)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -82,6 +73,7 @@ struct TreatmentSettingsView: View {
                 Button("추가") {
                     viewModel.addTreatmentType(newTreatment)
                     newTreatment = ""
+                    saveChanges()
                 }
             }
             .alert("시술 종류 수정", isPresented: $showingEditAlert) {
@@ -96,6 +88,7 @@ struct TreatmentSettingsView: View {
                     }
                     editingIndex = nil
                     editingText = ""
+                    saveChanges()
                 }
             }
             .onAppear {
@@ -103,10 +96,14 @@ struct TreatmentSettingsView: View {
                     viewModel.treatmentTypes = user.treatmentTypes
                 }
             }
-            .onChange(of: viewModel.isSaved) { saved in
-                if saved {
-                    dismiss()
-                }
+        }
+    }
+    
+    private func saveChanges() {
+        Task {
+            if let userId = authViewModel.currentUser?.id {
+                await viewModel.updateTreatmentTypes(userId: userId)
+                await authViewModel.refreshCurrentUser()
             }
         }
     }
