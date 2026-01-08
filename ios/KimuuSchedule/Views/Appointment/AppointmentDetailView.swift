@@ -40,25 +40,32 @@ struct AppointmentDetailView: View {
                         }
                     }
                 }
-                
-                if canEdit {
-                    Section {
-                        Button("수정") {
-                            showingEditSheet = true
-                        }
-                        
-                        Button("삭제", role: .destructive) {
-                            showingDeleteAlert = true
-                        }
-                    }
-                }
             }
             .navigationTitle("일정 상세")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button("닫기") {
                         dismiss()
+                    }
+                }
+                if canEdit {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            Button {
+                                showingEditSheet = true
+                            } label: {
+                                Label("수정", systemImage: "pencil")
+                            }
+                            
+                            Button(role: .destructive) {
+                                showingDeleteAlert = true
+                            } label: {
+                                Label("삭제", systemImage: "trash")
+                            }
+                        } label: {
+                            Image(systemName: "ellipsis.circle")
+                        }
                     }
                 }
             }

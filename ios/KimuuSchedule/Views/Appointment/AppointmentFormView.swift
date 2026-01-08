@@ -57,9 +57,6 @@ struct AppointmentFormView: View {
                 }
             }
             .scrollDismissesKeyboard(.interactively)
-            .onTapGesture {
-                hideKeyboard()
-            }
             .navigationTitle(isEditMode ? "일정 수정" : "일정 추가")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -75,6 +72,14 @@ struct AppointmentFormView: View {
                         }
                     }
                     .disabled(!isValid || formViewModel.isLoading)
+                }
+                ToolbarItem(placement: .keyboard) {
+                    HStack {
+                        Spacer()
+                        Button("완료") {
+                            hideKeyboard()
+                        }
+                    }
                 }
             }
             .onAppear {
