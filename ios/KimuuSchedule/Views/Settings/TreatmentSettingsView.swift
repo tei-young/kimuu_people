@@ -69,6 +69,7 @@ struct TreatmentSettingsView: View {
                         Task {
                             if let userId = authViewModel.currentUser?.id {
                                 await viewModel.updateTreatmentTypes(userId: userId)
+                                await authViewModel.refreshCurrentUser()
                             }
                         }
                     }

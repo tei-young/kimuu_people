@@ -62,4 +62,9 @@ final class AuthViewModel: ObservableObject {
             errorMessage = "사용자 정보 조회 실패"
         }
     }
+    
+    func refreshCurrentUser() async {
+        guard let userId = currentUser?.id else { return }
+        await fetchCurrentUser(authId: userId)
+    }
 }

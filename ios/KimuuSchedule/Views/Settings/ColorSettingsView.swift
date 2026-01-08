@@ -30,6 +30,7 @@ struct ColorSettingsView: View {
                         Task {
                             if let userId = authViewModel.currentUser?.id {
                                 await viewModel.updateColor(userId: userId)
+                                await authViewModel.refreshCurrentUser()
                             }
                         }
                     }
